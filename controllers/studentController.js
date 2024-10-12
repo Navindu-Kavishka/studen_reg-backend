@@ -11,3 +11,14 @@ exports.addStudent = (req, res) => {
         }
     } );
 };
+
+exports.getAllStudents = (req,res) => {
+    const quary = `SELECT * FROM students`;
+    db.query(quary, (err)=> {
+        if(err){
+            return res.status(500).send(err);
+        }else{
+            return res.status(200).send(students);
+        }
+    });
+};
